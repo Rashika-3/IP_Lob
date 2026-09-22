@@ -1,0 +1,1 @@
+com.shopping.model.Product
