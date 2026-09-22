@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quiz Result - Online Examination System</title>
+<style>
+body{
+font-family:Arial;
+background-color:lightpink;
+margin:0;
+}
+.header{
+background-color:lightpink;
+color:white;
+text-align:center;
+padding:20px;
+}
+.container{
+width:50%;
+margin:60px auto;
+background-color:white;
+padding:40px;
+border-radius:10px;
+text-align:center;
+}
+.container h1{
+color:blue;
+}
+.result-box{
+background-color:grey;
+padding:20px;
+margin:20px 0;
+border-radius:8px;
+border:1px solid pink;
+}
+.score{
+font-size:36px;
+font-weight:bold;
+color:green;
+margin:15px 0;
+}
+.button{
+background-color:grey;
+color:white;
+padding:14px 30px;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+margin-top:20px;
+text-decoration:none;
+display:inline-block;
+}
+.button:hover{
+background-color:darkpink;
+}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>Online Examination System</h1>
+<p>Internet Programming Quiz</p>
+</div>
+<div class="container">
+<h1>Quiz Result Summary</h1>
+<div class="result-box">
+<h2 id="studentGreeting" style="color:#333;">Hello, Student!</h2>
+<p style="color:gray;">You have successfully completed the test.</p>
+<p>Your Final Score:</p>
+<div class="score" id="scoreDisplay">0 / 10</div>
+<p id="remark" style="font-size:18px; font-weight:bold;"></p>
+</div>
+<a href="index.html" class="button">Logout / Back to Home</a>
+</div>
+<script>
+// Retrieve data from localStorage
+let studentName = localStorage.getItem("studentName");
+let score = localStorage.getItem("quizScore");
+if(studentName){
+document.getElementById("studentGreeting").textContent = "Congratulations, " + studentName + "!";
+}
+if(score !== null){
+document.getElementById("scoreDisplay").textContent = score + " / 10";
+let scoreNum = parseInt(score);
+let remarkEl = document.getElementById("remark");
+if(scoreNum >= 8){
+remarkEl.textContent = "Remark: Excellent Performance!";
+remarkEl.style.color = "green";
+} else if(scoreNum >= 5){
+remarkEl.textContent = "Remark: Good Job! You Passed.";
+remarkEl.style.color = "orange";
+} else {
+remarkEl.textContent = "Remark: Needs Improvement. Keep practicing!";
+remarkEl.style.color = "red";
+}
+}
+</script>
+</body>
+</html>

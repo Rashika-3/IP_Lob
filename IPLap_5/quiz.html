@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online Quiz</title>
+<style>
+body{
+font-family:Arial;
+background-color:lightpink;
+margin:0;
+}
+.header{
+background-color:lightpink;
+color:white;
+text-align:center;
+padding:20px;
+}
+.container{
+width:80%;
+margin:25px auto;
+background-color:white;
+padding:25px;
+border-radius:10px;
+}
+.question{
+background-color:white;
+padding:18px;
+margin-bottom:20px;
+border-left:5px solid pink;
+border-radius:5px;
+}
+.question h3{
+color:black;
+}
+.option{
+display:block;
+padding:10px;
+margin:7px 0;
+border:1px solid gray;
+border-radius:5px;
+cursor:pointer;
+}
+.option:hover{
+background-color:lightpink;
+color:grey;
+}
+.submit-button{
+background-color:blue;
+color:white;
+padding:14px 30px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+display:block;
+margin:20px auto;
+font-size: 16px;
+}
+.submit-button:hover{
+background-color:darkblue;
+}
+#errorMessage{
+color:red;
+font-weight:bold;
+text-align:center;
+margin-top:15px;
+}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>Online Examination System</h1>
+<p>Internet Programming Quiz</p>
+</div>
+<div class="container">
+<form id="quizForm">
+<div class="question">
+<h3>1. What does HTML stand for?</h3>
+<label class="option"><input type="radio" name="q1" value="High Text Machine Language"> High Text Machine Language</label>
+<label class="option"><input type="radio" name="q1" value="Hyperlink Text Marking Language"> Hyperlink Text Marking Language</label>
+<label class="option"><input type="radio" name="q1" value="Hyper Text Markup Language"> Hyper Text Markup Language</label>
+<label class="option"><input type="radio" name="q1" value="Home Text Markup Language"> Home Text Markup Language</label>
+</div>
+<div class="question">
+<h3>2. Which tag is used to create a paragraph in HTML?</h3>
+<label class="option"><input type="radio" name="q2" value="h1"> &lt;h1&gt;</label>
+<label class="option"><input type="radio" name="q2" value="br"> &lt;br&gt;</label>
+<label class="option"><input type="radio" name="q2" value="div"> &lt;div&gt;</label>
+<label class="option"><input type="radio" name="q2" value="p"> &lt;p&gt;</label>
+</div>
+<div class="question">
+<h3>3. Which tag is used to insert an image in HTML?</h3>
+<label class="option"><input type="radio" name="q3" value="img"> &lt;img&gt;</label>
+<label class="option"><input type="radio" name="q3" value="image"> &lt;image&gt;</label>
+<label class="option"><input type="radio" name="q3" value="pic"> &lt;pic&gt;</label>
+<label class="option"><input type="radio" name="q3" value="src"> &lt;src&gt;</label>
+</div>
+<div class="question">
+<h3>4. Which language is used to style an HTML page?</h3>
+<label class="option"><input type="radio" name="q4" value="HTML"> HTML</label>
+<label class="option"><input type="radio" name="q4" value="CSS"> CSS</label>
+<label class="option"><input type="radio" name="q4" value="JavaScript"> JavaScript</label>
+<label class="option"><input type="radio" name="q4" value="Python"> Python</label>
+</div>
+<div class="question">
+<h3>5. Which symbol is used for an ID selector in CSS?</h3>
+<label class="option"><input type="radio" name="q5" value="#"> #</label>
+<label class="option"><input type="radio" name="q5" value="."> .</label>
+<label class="option"><input type="radio" name="q5" value="*"> *</label>
+<label class="option"><input type="radio" name="q5" value="@"> @</label>
+</div>
+<div class="question">
+<h3>6. Which symbol is used for a class selector in CSS?</h3>
+<label class="option"><input type="radio" name="q6" value="."> .</label>
+<label class="option"><input type="radio" name="q6" value="#"> #</label>
+<label class="option"><input type="radio" name="q6" value="*"> *</label>
+<label class="option"><input type="radio" name="q6" value="@"> @</label>
+</div>
+<div class="question">
+<h3>7. Which property is used to change the background color in CSS?</h3>
+<label class="option"><input type="radio" name="q7" value="text-color"> text-color</label>
+<label class="option"><input type="radio" name="q7" value="color-background"> color-background</label>
+<label class="option"><input type="radio" name="q7" value="background-color"> background-color</label>
+<label class="option"><input type="radio" name="q7" value="bgcolor"> bgcolor</label>
+</div>
+<div class="question">
+<h3>8. Which language is used to add interactivity to a web page?</h3>
+<label class="option"><input type="radio" name="q8" value="HTML"> HTML</label>
+<label class="option"><input type="radio" name="q8" value="CSS"> CSS</label>
+<label class="option"><input type="radio" name="q8" value="JavaScript"> JavaScript</label>
+<label class="option"><input type="radio" name="q8" value="SQL"> SQL</label>
+</div>
+<div class="question">
+<h3>9. Which keyword is used to declare a variable in JavaScript?</h3>
+<label class="option"><input type="radio" name="q9" value="var"> var</label>
+<label class="option"><input type="radio" name="q9" value="int"> int</label>
+<label class="option"><input type="radio" name="q9" value="variable"> variable</label>
+<label class="option"><input type="radio" name="q9" value="declare"> declare</label>
+</div>
+<div class="question">
+<h3>10. Which method is used to display a message in the browser console?</h3>
+<label class="option"><input type="radio" name="q10" value="console.log"> console.log()</label>
+<label class="option"><input type="radio" name="q10" value="print"> print()</label>
+<label class="option"><input type="radio" name="q10" value="display"> display()</label>
+<label class="option"><input type="radio" name="q10" value="message"> message()</label>
+</div>
+<p id="errorMessage"></p>
+<button type="submit" class="submit-button" title="Click here to submit the quiz">
+Submit Test
+</button>
+</form>
+</div>
+<script>
+let correctAnswers = [
+"Hyper Text Markup Language",
+"p",
+"img",
+"CSS",
+"#",
+".",
+"background-color",
+"JavaScript",
+"var",
+"console.log"
+];
+document.getElementById("quizForm").addEventListener("submit", function(event){
+event.preventDefault();
+let errorElement = document.getElementById("errorMessage");
+errorElement.textContent = "";
+try {
+let unanswered = [];
+for(let i = 1; i <= 10; i++){
+let answer = document.querySelector('input[name="q' + i + '"]:checked');
+if(!answer){
+unanswered.push(i);
+}
+}
+if(unanswered.length > 0){
+throw new Error("Please answer question(s) left blank: " + unanswered.join(", "));
+}
+let score = 0;
+for(let i = 1; i <= 10; i++){
+let answer = document.querySelector('input[name="q' + i + '"]:checked');
+if(answer.value === correctAnswers[i - 1]){
+score++;
+}
+}
+localStorage.setItem("quizScore", score);
+window.location.href = "result.html";
+} catch(error) {
+errorElement.textContent = error.message;
+}
+});
+</script>
+</body>
+</html>

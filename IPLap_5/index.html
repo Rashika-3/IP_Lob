@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online Examination System - Registration</title>
+<style>
+body{
+font-family:Arial;
+background-color:lightpink;
+margin:0;}
+.header{
+background-color:lightpink;
+color:white;
+text-align:center;
+padding:20px;}
+.container{
+width:50%;
+margin:40px auto;
+background-color:white;
+padding:40px;
+border-radius:10px;}
+.container h1{
+color:grey;
+text-align:center;}
+.form-group{
+margin-bottom:20px;
+text-align:left;}
+.form-group label{
+display:block;
+font-weight:bold;
+color:grey;
+margin-bottom:5px;}
+.form-group input{
+width:100%;
+padding:10px;
+border:1px solid pink;
+border-radius:5px;
+box-sizing:border-box;
+font-size:16px;}
+.error-msg{
+color:red;
+font-size:14px;
+margin-top:5px;
+display:block;}
+.button{
+background-color:grey;
+color:white;
+padding:15px 40px;
+border:none;
+border-radius:6px;
+font-size:18px;
+cursor:pointer;
+width:100%;
+margin-top:10px;}
+.button:hover {
+background-color:pink;}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>Online Examination System</h1>
+<p>Internet Programming Quiz</p>
+</div>
+<div class="container">
+<h1>Student Registration</h1>
+<p style="text-align:center; color:lightpink;">Please register before starting the quiz.</p>
+<form id="regForm" onsubmit="validateAndRegister(event)">
+<div class="form-group">
+<label for="fullname">Full Name:</label>
+<input type="text" id="fullname" placeholder="Enter your full name">
+<span id="nameError" class="error-msg"></span>
+</div>
+<div class="form-group">
+<label for="email">Email Address:</label>
+<input type="email" id="email" placeholder="Enter your email">
+<span id="emailError" class="error-msg"></span>
+</div>
+<div class="form-group">
+<label for="password">Password:</label>
+<input type="password" id="password" placeholder="Create a password">
+<span id="passError" class="error-msg"></span>
+</div>
+<button type="submit" class="button">Register & Start Quiz</button>
+</form>
+</div>
+<script>
+function validateAndRegister(event){
+event.preventDefault();
+let name = document.getElementById("fullname").value.trim();
+let email = document.getElementById("email").value.trim();
+let password = document.getElementById("password").value.trim();
+let nameError = document.getElementById("nameError");
+let emailError = document.getElementById("emailError");
+let passError = document.getElementById("passError");
+nameError.textContent = "";
+emailError.textContent = "";
+passError.textContent = "";
+let isValid = true;
+if(name === ""){
+nameError.textContent = "Full name is required.";
+isValid = false;
+}
+if(email === ""){
+emailError.textContent = "Email is required.";
+isValid = false;
+} else {
+let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+if(!email.match(emailPattern)){
+emailError.textContent = "Please enter a valid email address.";
+isValid = false;
+}
+}
+if(password === ""){
+passError.textContent = "Password is required.";
+isValid = false;
+} else if(password.length < 6){
+passError.textContent = "Password must be at least 6 characters long.";
+isValid = false;
+}
+if(isValid){
+try{
+localStorage.setItem("studentName", name);
+window.location.href = "quiz.html";
+}
+catch(error){
+alert("Unable to start the quiz.");
+}
+}
+}
+</script>
+</body>
+</html>
